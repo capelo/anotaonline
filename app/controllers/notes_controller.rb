@@ -34,9 +34,10 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find_by_name(params[:name])
+    @note = Note.find_by_name(params[:id])
 
-    @note.update!(note_params)
+    @note.update!(note_paramsupdate)
+
   end
 
   private
@@ -44,5 +45,9 @@ class NotesController < ApplicationController
   	def note_params
   		params.permit(:name, :body)
   	end
+
+    def note_paramsupdate
+      params.require(:note).permit(:name, :body)
+    end
 
 end

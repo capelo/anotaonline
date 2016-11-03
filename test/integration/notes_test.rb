@@ -12,7 +12,7 @@ class NotesTest < ActionDispatch::IntegrationTest
 		get "/mynote2836"
 		
 		@note = Note.find_by_name("mynote2836")
-		byebug
+
 		assert_not @note.blank?, "note mynote2836 not created"
 
 		assert_routing({ method: 'get', path: '/mynote2836' }, { controller: "notes", action: "new", name: "mynote2836" })
@@ -48,6 +48,7 @@ class NotesTest < ActionDispatch::IntegrationTest
 	test "updated route" do
   		assert_routing({ method: 'patch', path: '/notetest' }, { controller: "notes", action: "update", name: "notetest" })
   	end
+
 
 
 end
