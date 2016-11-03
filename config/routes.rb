@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :notes, :except => [:index, :patch]
+  resources :notes, :except => [:index, :patch, :show]
   
   get '/notes/:id' => redirect("/:id")
 
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/:name', to: 'notes#new'
   patch '/:name', to: 'notes#update'
 
+  get '/:name', to: 'notes#show'
   root 'notes#new'
 
   get '*id', to: 'notes#new'

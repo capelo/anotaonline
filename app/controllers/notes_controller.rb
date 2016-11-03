@@ -9,16 +9,15 @@ class NotesController < ApplicationController
   	if params[:name].blank?
   		@note = Note.random_note
   		@note.save!
+      redirect_to root_url.concat(@note.name)
   	else
   		@note = Note.find_by_name(params[:name])
   		if @note.blank?
-			@note = Note.new(note_params)
-			@note.save! 			
+			  @note = Note.new(note_params)
+			  @note.save! 			
   		end
   	end
-  	redirect_to note_path(@note)
-
-    # redirect_to root_url.concat(@note.name)
+  	
   end
 
   def create
@@ -27,7 +26,6 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.friendly.find(params[:id])
-    # @note = Note.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

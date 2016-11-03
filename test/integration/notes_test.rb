@@ -9,14 +9,13 @@ class NotesTest < ActionDispatch::IntegrationTest
 	end
 
 	test "should create note on access a non exist url" do
-		get "/mynote"
+		get "/mynote2836"
 		
-		@note = Note.find_by_name("mynote")
+		@note = Note.find_by_name("mynote2836")
+		byebug
+		assert_not @note.blank?, "note mynote2836 not created"
 
-		assert_not @note.blank?, "note mynote not created"
-
-		assert_redirected_to root_url.concat(@note.name), "error creating a new note"
-
+		assert_routing({ method: 'get', path: '/mynote2836' }, { controller: "notes", action: "new", name: "mynote2836" })
 	end
 
 	test "should load a note alright created on access an url" do
