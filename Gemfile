@@ -50,3 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'friendly_id'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
+
+gem 'foundation-rails'

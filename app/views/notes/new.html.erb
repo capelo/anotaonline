@@ -1,12 +1,10 @@
 <h1><%= @note.name %></h1>
 
-<p>
-	<%= @note.body %>
-</p>
-
 <%= form_for @note do |f| %>
-  
-  <%= f.text_area :body %>
-  
-  <%= f.submit %>
+	<div class="row">
+		<div class="medium-15 columns">  
+			<%= f.text_area :body, rows: "10" %>
+  		</div>
+  		<%= f.submit "save", :data => { disable_with: false } %>
+  	</div>
 <% end %>
